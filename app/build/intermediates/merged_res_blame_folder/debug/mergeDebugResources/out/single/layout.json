@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\shaya\\.gradle\\daemon\\8.11.1\\com.example.bookfinder.app-mergeDebugResources-40:\\layout\\item_book.xml",
+        "source": "C:\\Users\\shaya\\.gradle\\daemon\\8.11.1\\com.example.bookfinder.app-main-43:\\layout\\item_book.xml"
+    },
+    {
+        "merged": "C:\\Users\\shaya\\.gradle\\daemon\\8.11.1\\com.example.bookfinder.app-mergeDebugResources-40:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\shaya\\.gradle\\daemon\\8.11.1\\com.example.bookfinder.app-main-43:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.bookfinder.app-mergeDebugResources-40:/layout/activity_main.xml",
+        "source": "com.example.bookfinder.app-main-43:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\shaya\\.gradle\\daemon\\8.11.1\\com.example.bookfinder.app-mergeDebugResources-40:\\layout\\activity_search.xml",
+        "source": "C:\\Users\\shaya\\.gradle\\daemon\\8.11.1\\com.example.bookfinder.app-main-43:\\layout\\activity_search.xml"
+    }
+]

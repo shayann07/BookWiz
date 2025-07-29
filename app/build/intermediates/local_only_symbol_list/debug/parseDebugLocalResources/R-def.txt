@@ -1,0 +1,36 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable bg_appbar
+drawable bg_books
+drawable ic_back_24
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_placeholder
+drawable ic_search_24
+id emptyState
+id etSearch
+id etSearchMain
+id imgCover
+id progress
+id rvFeatured
+id rvResults
+id swipeRefresh
+id tilSearch
+id tilSearchMain
+id toolbar
+id tvAuthor
+id tvTitle
+layout activity_main
+layout activity_search
+layout item_book
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.BookFinder
+style RoundedImage
+style Theme.BookFinder
+style ToolbarTitleBold
+xml backup_rules
+xml data_extraction_rules

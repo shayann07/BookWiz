@@ -1,0 +1,6 @@
+com.example.bookfinder.test.app-core-1.6.1-0 C:\Users\shaya\.gradle\caches\8.11.1\transforms\91d7aea7f075f83f92183431f9b94ff0\transformed\core-1.6.1\res
+com.example.bookfinder.test.app-tracing-1.2.0-1 C:\Users\shaya\.gradle\caches\8.11.1\transforms\c3ee17458a5e6a4e329a812fe0b89688\transformed\tracing-1.2.0\res
+com.example.bookfinder.test.app-androidTest-2 D:\AndroidStudioProjects\BookFinder\app\build\generated\res\resValues\androidTest\debug
+com.example.bookfinder.test.app-mergeDebugAndroidTestResources-3 D:\AndroidStudioProjects\BookFinder\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.bookfinder.test.app-mergeDebugAndroidTestResources-4 D:\AndroidStudioProjects\BookFinder\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.bookfinder.test.app-debugAndroidTest-5 D:\AndroidStudioProjects\BookFinder\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
