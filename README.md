@@ -48,3 +48,5 @@
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).  Feel free to fork and contribute.
+
+<!-- gitpulse:contribution index="1" timestamp="2026-05-03" -->
