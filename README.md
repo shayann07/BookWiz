@@ -1,82 +1,84 @@
 # BookWiz
 
-**BookWiz** is a modern Android application that lets you instantly search, discover and browse books via the [Google Books API](https://developers.google.com/books).  Powered by a clean architecture and MVVM pattern, the app delivers a smooth, intuitive experience for finding titles, authors and bestsellers.
+Kotlin Android book browser with paged Google Books results, debounced search, cover images, and pull-to-refresh.
 
-## 📚 Features
+## Overview
 
-- **Instant search** – type a title, author or keyword and see results update in real time.
-- **Book discovery** – browse popular and top‑selling books from Google Books.
-- **Detailed book pages** – view cover images, descriptions, authors, publishers and published dates.
-- **Add to favourites** – save books you love for quick access later (local persistence).
-- **Responsive UI** – built with Material Design components and dark/light theme support.
+BookWiz is a small Android client for the public Google Books API. The main screen loads a two-column paged feed using the query `bestsellers`, then switches to paged search results as the user types. Each result card displays a cover, title, and author information.
 
-## 🛠️ Tech Stack
+The project demonstrates Retrofit networking, Moshi response mapping, Paging 3, Kotlin Flow, ViewModel state, Coil image loading, and View Binding. It does not currently include book detail pages, favorites, local persistence, authentication, or dependency injection.
 
-- **Languages**: Java & Kotlin
-- **Architecture**: MVVM (ViewModel, LiveData)
-- **Network**: Retrofit/OkHttp to call the Google Books REST API
-- **Dependency Injection**: Hilt/Dagger2
-- **Image Loading**: Glide/Picasso for book covers
-- **Database**: Room (SQLite) for favourites cache
-- **Build & Tools**: Gradle, AndroidX, Material Components
+## Features
 
-## 🚀 Getting Started
+- Paged Google Books API requests
+- Two-column book grid
+- Debounced inline search after 350 milliseconds
+- Featured query shown when the search field is empty
+- Pull-to-refresh through `SwipeRefreshLayout`
+- Book cover loading with HTTPS normalization and rounded corners
+- Title and author display
+- Paging load-state integration for refresh indication
 
-1. **Clone the repository**
+## Tech Stack
 
-   ```bash
-   git clone https://github.com/shayann07/BookWiz.git
-   cd BookWiz
-   ```
+- Kotlin
+- Android SDK and XML layouts
+- View Binding
+- AndroidX ViewModel and Lifecycle
+- Kotlin coroutines and Flow
+- Paging 3
+- Retrofit
+- Moshi with generated adapters
+- Coil
+- Material Components
 
-2. **Obtain a Google Books API key** (optional)
+## How It Works
 
-   The app works without an API key but is subject to lower quota.  For production use, generate an API key from the [Google Books API console](https://developers.google.com/books/docs/v1/using#APIKey).
+`MainActivity` creates a paged grid and initially collects the ViewModel's featured flow. Text changes are debounced before requesting a new flow for the entered query. `BooksRepository` creates a `Pager` backed by a custom `PagingSource`, which sends `startIndex`, `maxResults`, and `printType=books` to the Google Books volumes endpoint. `BooksAdapter` renders the returned cover, title, and authors.
 
-   - Copy your API key into `local.properties` or a `secrets.properties` file and reference it in the network module.
+## Project Structure
 
-3. **Open in Android Studio**
+```text
+app/src/main/java/com/example/bookfinder/
+|-- data/
+|   |-- model/       # Google Books response models
+|   |-- network/     # Retrofit API and client creation
+|   `-- repository/  # Pager and PagingSource
+`-- ui/
+    |-- MainActivity.kt
+    |-- MainViewModel.kt
+    |-- BooksAdapter.kt
+    |-- SearchActivity.kt
+    `-- GridSpacingItemDecoration.kt
+```
 
-   - File → Open and select the project root.
-   - Let Gradle sync and download dependencies.
+## Getting Started
 
-4. **Run the app**
+### Prerequisites
 
-   - Connect an Android device or start an emulator.
-   - Click **Run** to build and launch BookWiz.
+- Android Studio with a JDK compatible with Android Gradle Plugin 8.10.1
+- Android SDK 35
+- An Android 7.0 (API 24) or newer device or emulator
+- Internet access for Google Books requests and cover images
 
-## 📄 License
+### Build
 
-This project is licensed under the [MIT License](LICENSE).  Feel free to fork and contribute.
+```bash
+git clone https://github.com/shayann07/BookWiz.git
+cd BookWiz
+./gradlew assembleDebug
+```
 
-<!-- gitpulse:contribution index="1" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="2" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="3" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="4" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="5" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="6" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="7" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="8" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="9" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="10" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="11" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="12" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="13" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="14" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="15" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="16" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="17" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="18" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="19" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="20" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="21" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="22" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="23" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="24" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="25" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="26" timestamp="2026-05-03" -->
-<!-- gitpulse:contribution index="27" timestamp="2026-05-04" -->
-<!-- gitpulse:contribution index="28" timestamp="2026-05-04" -->
-<!-- gitpulse:contribution index="29" timestamp="2026-05-04" -->
-<!-- gitpulse:contribution index="30" timestamp="2026-05-04" -->
-<!-- gitpulse:contribution index="31" timestamp="2026-05-04" -->
+On Windows PowerShell, use `./gradlew.bat assembleDebug`. The current API calls do not attach a Google API key.
+
+## Current Status and Limitations
+
+- Result cards do not have click handling or a detail screen.
+- There is no favorites feature, Room database, offline cache, Hilt/Dagger setup, or account system.
+- The `SearchActivity` source and layout exist, but the activity is not declared in the manifest and no navigation to it was found; the active main screen uses inline search instead.
+- The featured feed is a normal Google Books text query for `bestsellers`, not a verified bestseller ranking.
+- Load errors do not have a dedicated retry or error-state UI.
+- `local.properties` is tracked even though it normally contains machine-specific SDK configuration.
+- Only generated example unit and instrumentation tests are present.
+- A local `assembleDebug` attempt on June 12, 2026 did not complete within the three-minute verification window.
+- No license file is included.
